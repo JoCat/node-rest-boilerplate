@@ -1,0 +1,23 @@
+{
+    "name": "node-rest-boilerplate",
+    "version": "1.0.0",
+    "description": "Template for creating a REST server in Node.js",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon .",
+        "start": "node .",
+        "start:pm2": "pm2 start index.js --name=api",
+        "restart": "pm2 delete -s api || ':' && npm run start"
+    },
+    "author": "JCat",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.0.0",
+        "fastify": "^3.27.2",
+        "fastify-cors": "^6.0.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}

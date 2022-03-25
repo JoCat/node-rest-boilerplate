@@ -1,0 +1,24 @@
+name: Deploy
+
+on:
+    push:
+        branches: [master]
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Cleaning up the site directory before deployment
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.SSH_SERVER_IP }}
+                  port: ${{ secrets.SSH_SERVER_PORT }}
+                  username: ${{ secrets.SSH_USER }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                      cd ${{ secrets.API_DIR }}
+                      git reset --hard
+                      git pull
+                      npm ci
+                      npm run restart
