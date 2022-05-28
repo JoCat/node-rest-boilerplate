@@ -7,13 +7,10 @@ const app = fastify();
 app.register(routes);
 app.register(fastifyCors);
 
-async function main() {
-    try {
-        await app.listen(config.SERVER_PORT, "0.0.0.0");
-        console.log(`Server started on port ${config.SERVER_PORT}`);
-    } catch (error) {
-        console.error(error);
-        process.exit(1);
-    }
+try {
+    await app.listen(config.SERVER_PORT, config.SERVER_ADDR);
+    console.log(`Server started on port ${config.SERVER_PORT}`);
+} catch (error) {
+    console.error(error);
+    process.exit(1);
 }
-main();
