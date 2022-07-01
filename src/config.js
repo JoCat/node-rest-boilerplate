@@ -2,6 +2,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const config = {
-    SERVER_PORT: process.env.SERVER_PORT || 4000,
-    SERVER_ADDR: process.env.SERVER_ADDR || "0.0.0.0",
+    port: Number(process.env.SERVER_PORT) || 4000,
+    host: process.env.SERVER_HOST || "0.0.0.0",
 };
